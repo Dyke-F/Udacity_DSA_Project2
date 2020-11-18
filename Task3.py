@@ -5,20 +5,20 @@ class HuffmanNode(object):
     """ Node object
         PARAMETERS:
         ==========
-        identity = unique letter of input string to HuffmanHeap
-        frequency = count of each unique letter in input string
-        code = int(0,1); == 0 if after building the tree the Node
-        becomes a left child, else == 1 if right child
-        left / right = when comparing two nodes,
-        the smaller node becomes left else right
-        """
+            identity = unique letter of input string to HuffmanHeap
+            frequency = count of each unique letter in input string
+            code = int(0,1); == 0 if after building the tree the Node 
+                             becomes a left child, else == 1 if right child
+            left / right = when comparing two nodes, 
+                         the smaller node becomes left else right
+    """
     
-    def __init__(self, identity,
-                 frequency,
+    def __init__(self, identity, 
+                 frequency, 
                  left = None,
                  right = None, code = None):
         
-        self.identity = identity
+        self.identity = identity     
         self.frequency = frequency
         self.code = code
         self.left = left
@@ -31,12 +31,12 @@ class HuffmanHeap(object):
         that are later resorted to a full tree.
         PARAMETERS:
         ==========
-        self.tree = initial Array / Dynamic Python List, holding unique
-        HuffmanNodes for each unique character.
-        self.next_idx = parameter for insertion
-        self.count_dict = initialize the HuffmanNode objects with their
-        respective frequency
-        """
+            self.tree = initial Array / Dynamic Python List, holding unique
+                        HuffmanNodes for each unique character.
+            self.next_idx = parameter for insertion
+            self.count_dict = initialize the HuffmanNode objects with their
+                              respective frequency
+    """
     
     def __init__(self, init_size = 100):
         self.tree = [None for _ in range(init_size)]
@@ -47,9 +47,9 @@ class HuffmanHeap(object):
         """ Count frequency of each unique character in the given data """
         for char in data:
             self.count_dict[char] = self.count_dict.get(char, 0) + 1
-
-def init_insert(self):
-    """ Initialize the heap tree """
+        
+    def init_insert(self):
+        """ Initialize the heap tree """
         
         for identity, frequency in self.count_dict.items():
             self.tree[self.next_idx] = HuffmanNode(identity, frequency, code=0)
@@ -61,117 +61,117 @@ def init_insert(self):
                 self.tree = [None for _ in range(len(temp)*2)]
                 for idx, item in enumerate(temp):
                     self.tree[idx] = item
-                        
-                        def insert(self, node):
-                            """ When creating the tree, reinsert the current
-                                new node with its appended left / right children
-                                back to the heap and heapsort again"""
-                                    self.tree[self.next_idx] = node
-                                    self._upstream_heapify()
-                                    self.next_idx += 1
-                                        
-                                        def _upstream_heapify(self):
-                                            """ Adopted from Udacitys Data Structures and Algorithms Course """
-                                                child_index = self.next_idx
-                                                    while child_index >= 1:
-                                                        parent_index = (child_index -1) // 2
-                                                        parent_element = self.tree[parent_index]
-                                                        child_element = self.tree[child_index]
-                                                        if child_element.frequency < parent_element.frequency:
-                                                            self.tree[parent_index] = child_element
-                                                            self.tree[child_index] = parent_element
-                                                            child_index = parent_index
-                                                                else:
-                                                                    break
-                                                                        
-                                                                        def heap_sort(self):
-                                                                            """ After initialising a unique node for each unique character and
-                                                                                pushing them into self.tree, start sorting:
-                                                                                Algorithm: 1. Obtain the lowest frequency node.
-                                                                                2. Resort the tree and repeat step 1 and 2.
-                                                                                3. Create a new node, fusing the 2 nodes obtained above.
-                                                                                4. Reinsert the new node into the heap.
-                                                                                5. Repeat 1.-4. until all nodes are connected in a MinHeap Tree.
-                                                                                """
-                                                                                    
-                                                                                    
-                                                                                    
-                                                                                    def get_lowest():
-                                                                                        lowest_freq = self.tree[0]
-                                                                                        self.next_idx -= 1
-                                                                                            last_item = self.tree[self.next_idx]
-                                                                                            self.tree[0] = last_item
-                                                                                            self.tree[self.next_idx] = None
-                                                                                            self._downstream_heapify()
-                                                                                            return lowest_freq
-                                                                                                
-                                                                                                while self.next_idx >= 2:
-                                                                                                    # if self.next_idx is at least two, we guarantee when
-                                                                                                    # calling get_lowest we obtain last_item: idx=1 for the
-                                                                                                    # first call and idx = 0 for the last item in the second call below
-                                                                                                    one = get_lowest()
-                                                                                                    one.code = 0
-                                                                                                        
-                                                                                                        two = get_lowest()
-                                                                                                        two.code = 1
-                                                                                                            
-                                                                                                            params = None, one.frequency+two.frequency, one, two
-                                                                                                                new_node = HuffmanNode(*params)
-                                                                                                                self.insert(new_node)
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    def left_child(self, idx):
-                                                                                                                        """ Helper function for down-heapifying, returns left childs index and node
-                                                                                                                            if the left child exists
-                                                                                                                            """
-                                                                                                                                child_idx = 2 * idx + 1
-                                                                                                                                    if child_idx < self.next_idx:
-                                                                                                                                        return (child_idx, self.tree[child_idx])
-                                                                                                                                            else:
-                                                                                                                                                return (child_idx, None)
-                                                                                                                                                    
-                                                                                                                                                    def right_child(self, idx):
-                                                                                                                                                        """ Helper function for down-heapifying, returns right childs index and node
-                                                                                                                                                            if the right child exists
-                                                                                                                                                            """
-                                                                                                                                                                child_idx = 2 * idx + 2
-                                                                                                                                                                    if child_idx < self.next_idx:
-                                                                                                                                                                        return (child_idx, self.tree[child_idx])
-                                                                                                                                                                            else:
-                                                                                                                                                                                return (child_idx, None)
-                                                                                                                                                                                    
-                                                                                                                                                                                    
-                                                                                                                                                                                    def switch(self, idx1, idx2):
-                                                                                                                                                                                        """ Change nodes in the heap-tree with respect to indices """
-                                                                                                                                                                                            self.tree[idx1], self.tree[idx2] = self.tree[idx2], self.tree[idx1]
-                                                                                                                                                                                                
-                                                                                                                                                                                                
-                                                                                                                                                                                                def _downstream_heapify(self, parent_idx = 0):
-                                                                                                                                                                                                    """ Pass a node from root down to its matching index """
-                                                                                                                                                                                                        node = self.tree[parent_idx] # root
-                                                                                                                                                                                                        if parent_idx < self.next_idx: # assert node index is not out of range
-                                                                                                                                                                                                            left_idx, left = self.left_child(parent_idx) # get left child
-                                                                                                                                                                                                            right_idx, right = self.right_child(parent_idx) # get right child
-                                                                                                                                                                                                            min_element = node.frequency
-                                                                                                                                                                                                                if left != None: # compare parent to left child if left child exists
-                                                                                                                                                                                                                    min_element = min(min_element, left.frequency)
-                                                                                                                                                                                                                        if right != None: # compare parent to right child if left right exists
-                                                                                                                                                                                                                            min_element = min(min_element, right.frequency)
-                                                                                                                                                                                                                                if min_element == node.frequency:
-                                                                                                                                                                                                                                    return # don't change anything if parent is the min-node
-                                                                                                                                                                                                                                        elif min_element == left.frequency:
-                                                                                                                                                                                                                                            self.switch(parent_idx, left_idx)   # change parent and left node
-                                                                                                                                                                                                                                            self._downstream_heapify(left_idx)  # recursively call down-heap on left node
-                                                                                                                                                                                                                                                elif min_element == right.frequency:
-                                                                                                                                                                                                                                                    self.switch(parent_idx, right_idx)  # change parent and right node
-                                                                                                                                                                                                                                                    self._downstream_heapify(right_idx) # recursively call down-heap on right node
+                    
+    def insert(self, node):
+        """ When creating the tree, reinsert the current 
+        new node with its appended left / right children 
+        back to the heap and heapsort again"""
+        self.tree[self.next_idx] = node
+        self._upstream_heapify()
+        self.next_idx += 1
+                    
+    def _upstream_heapify(self):
+        """ Adopted from Udacitys Data Structures and Algorithms Course """
+        child_index = self.next_idx
+        while child_index >= 1:
+            parent_index = (child_index -1) // 2
+            parent_element = self.tree[parent_index]
+            child_element = self.tree[child_index]
+            if child_element.frequency < parent_element.frequency:
+                self.tree[parent_index] = child_element
+                self.tree[child_index] = parent_element
+                child_index = parent_index
+            else:
+                break
+                
+    def heap_sort(self):
+        """ After initialising a unique node for each unique character and
+            pushing them into self.tree, start sorting:
+                Algorithm: 1. Obtain the lowest frequency node.
+                           2. Resort the tree and repeat step 1 and 2.
+                           3. Create a new node, fusing the 2 nodes obtained above.
+                           4. Reinsert the new node into the heap.
+                           5. Repeat 1.-4. until all nodes are connected in a MinHeap Tree.
+        """
+        
 
+        
+        def get_lowest():
+            lowest_freq = self.tree[0]
+            self.next_idx -= 1
+            last_item = self.tree[self.next_idx]
+            self.tree[0] = last_item
+            self.tree[self.next_idx] = None
+            self._downstream_heapify()
+            return lowest_freq
+        
+        while self.next_idx >= 2:
+            # if self.next_idx is at least two, we guarantee when 
+            # calling get_lowest we obtain last_item: idx=1 for the 
+            # first call and idx = 0 for the last item in the second call below
+            one = get_lowest()
+            one.code = 0
+
+            two = get_lowest()
+            two.code = 1
+
+            params = None, one.frequency+two.frequency, one, two
+            new_node = HuffmanNode(*params)
+            self.insert(new_node)
+            
+            
+    def left_child(self, idx):
+        """ Helper function for down-heapifying, returns left childs index and node
+            if the left child exists 
+        """
+        child_idx = 2 * idx + 1
+        if child_idx < self.next_idx:
+            return (child_idx, self.tree[child_idx])
+        else:
+            return (child_idx, None)
+    
+    def right_child(self, idx):
+        """ Helper function for down-heapifying, returns right childs index and node
+            if the right child exists 
+        """
+        child_idx = 2 * idx + 2
+        if child_idx < self.next_idx:
+            return (child_idx, self.tree[child_idx])
+        else:
+            return (child_idx, None)
+        
+            
+    def switch(self, idx1, idx2):
+        """ Change nodes in the heap-tree with respect to indices """
+        self.tree[idx1], self.tree[idx2] = self.tree[idx2], self.tree[idx1]
+             
+                
+    def _downstream_heapify(self, parent_idx = 0):
+        """ Pass a node from root down to its matching index """
+        node = self.tree[parent_idx] # root
+        if parent_idx < self.next_idx: # assert node index is not out of range
+            left_idx, left = self.left_child(parent_idx) # get left child
+            right_idx, right = self.right_child(parent_idx) # get right child
+            min_element = node.frequency
+            if left != None: # compare parent to left child if left child exists
+                min_element = min(min_element, left.frequency)
+            if right != None: # compare parent to right child if left right exists
+                min_element = min(min_element, right.frequency)
+            if min_element == node.frequency:
+                return # don't change anything if parent is the min-node
+            elif min_element == left.frequency:
+                self.switch(parent_idx, left_idx)   # change parent and left node
+                self._downstream_heapify(left_idx)  # recursively call down-heap on left node
+            elif min_element == right.frequency:   
+                self.switch(parent_idx, right_idx)  # change parent and right node
+                self._downstream_heapify(right_idx) # recursively call down-heap on right node
+    
 def huffman_encoding(data):
     """ Encode a text message into binary 0-1 bit integer sequences. """
     assert data != "", "Please provide a non-empty string"
     tree = HuffmanHeap()    # initialize the HuffmanHeap
     tree.count_freq(data)   # count frequency and create nodes
-    
+
     tree.init_insert()      # initialise a sorted heap with nodes
     tree.heap_sort()        # build the real tree
     
@@ -182,7 +182,7 @@ def huffman_encoding(data):
     
     def traverse_rec(node, temp):
         """ Traverse the tree in DFS (depth first search)"""
-        
+
         if node:
             if node.code is not None:     # root node will not hold code
                 temp += str(node.code)
@@ -193,7 +193,7 @@ def huffman_encoding(data):
         return encoding_dict
     
     encoding_dict = traverse_rec(root, temp)
-    
+        
     # encode the data
     encoded_data = ""
     for char in data:
@@ -220,16 +220,16 @@ def huffman_decoding(data, tree, encoding_dict):
     iterator = (value for value in data)
     idx = 0
     while idx < len(data):
-        
+
         subcode = ""     # binary strings for chars are in varying length,
-        # so increase subcode length until we find it in
-        # the decoding_dict.keys(), then return its character
-        
+                         # so increase subcode length until we find it in 
+                         # the decoding_dict.keys(), then return its character
+                
         while subcode not in decoding_dict and idx < len(data):
             subcode += next(iterator)
             idx += 1
         decoded += decoding_dict[subcode]
-    
+        
     return decoded
 
 
@@ -275,7 +275,7 @@ print("----------------------")
 # Edge cases
 
 # In this tree, only one node will be inserted holding the value a. The length of the string doesnt matter (see below).
-# In this special case, by default the nodes code is set to 0 to provide minimu memory usage, although the node is per definition
+# In this special case, by default the nodes code is set to 0 to provide minimu memory usage, although the node is per definition 
 # not the left child of a parent ...
 
 print("Test case 3 ----------")

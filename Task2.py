@@ -8,7 +8,7 @@ def find_files(suffix, path):
 
 def _recfiles(suffix, path, output):
     """ Recursive function, iterates through the given path and checks all its subdirectories.
-        Base case: If an input path to this function is a file, check if it ends with suffix and
+        Base case: If an input path to this function is a file, check if it ends with suffix and 
         eventuallly append it to the output list
         Else: Create a next_path list with all subdirectories of the current path. Then recursively
         iterate through each subpath until hitting the base condition.
@@ -21,15 +21,14 @@ def _recfiles(suffix, path, output):
             output.append(filename)
 
     else:
-        next_path = [path+"/"+element for element in os.listdir(path)]
+        next_path = [os.path.join(path, element) for element in os.listdir(path)]
         for subpath in next_path:
             _recfiles(suffix, subpath, output)
-    
+            
     return output
 
 
-path = os.path.join(os.getcwd()+"testdir")
-
+path = os.path.join(os.getcwd()+"/desktop/testdir")
 
 ### Test cases ###
 

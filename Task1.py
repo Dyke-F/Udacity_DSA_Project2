@@ -54,8 +54,8 @@ class LRU_Cache(object):
             self.end = self.end.next
             return self.cache[key].value
     
-    else:
-        return -1
+        else:
+            return -1
 
     def set(self, key, value):
         """ Inserts data (value) in a CacheNode object to the mapping and to the end of the queue.

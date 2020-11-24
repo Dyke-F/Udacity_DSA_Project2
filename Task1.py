@@ -1,3 +1,4 @@
+
 class CacheNode(object):
     """ Node object, PARAMETERS:
         ========================
@@ -62,6 +63,9 @@ class LRU_Cache(object):
             If mapping size limit is reached, removes the object at the start of the queue
             (least recently used) from both the queue and the mapping (dict).
             """
+        if self.capacity == 0:
+            print("Capacity is zero. Increase cache limit")
+            return
         
         if len(self.cache) >= self.capacity:
             del_node = self.start
@@ -122,3 +126,14 @@ print(mycache.get(1), "---> should return 1")
 node = mycache.start
 print(node, "---> should return None")
 # None
+
+# edge case1
+mycache = LRU_Cache(0)
+mycache.set(1, 1) # prints message
+print(mycache.get(1)) # returns -1
+
+#edge case2
+mycache = LRU_Cache(1)
+mycache.set(1,1)
+mycache.set(2,2)
+print(mycache.get(1)) # returns -1, cause already deleted

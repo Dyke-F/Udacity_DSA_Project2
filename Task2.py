@@ -12,7 +12,7 @@ def _recfiles(suffix, path, output):
         eventuallly append it to the output list
         Else: Create a next_path list with all subdirectories of the current path. Then recursively
         iterate through each subpath until hitting the base condition.
-        """
+    """
     
     if os.path.isfile(path):
         if path.endswith(suffix):

@@ -20,12 +20,12 @@ def _recfiles(suffix, path, output):
             filename = path[end_idx+1:]
             output.append(filename)
 
-else:
-    next_path = [path+"/"+element for element in os.listdir(path)]
-    for subpath in next_path:
-        _recfiles(suffix, subpath, output)
-    
-    return output
+    else:
+        next_path = [path+"/"+element for element in os.listdir(path)]
+        for subpath in next_path:
+            _recfiles(suffix, subpath, output)
+
+        return output
 
 
 path = os.path.join(os.getcwd()+"testdir")

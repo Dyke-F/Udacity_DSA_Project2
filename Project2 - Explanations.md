@@ -8,7 +8,7 @@ The space complexity is dependant only on the input, in the worst case this is t
 
 **Task 2**
 ___
-In this task, we recursively check folders for certain files. A folder can have n subfolders (depth), and every (sub)folder can have x folders (width). The overall time complexity is therefore depending on the number of recursions we have to make (O(n * x)).
+In this task, we recursively check folders for certain files. In this case we can consider this as a tree data structure, where parents are folders, childs are subfolders and files are the leaves. To reach the "deepest" leaf node our time complexity would be equal to the depth of the tree which is O(n).
 Space complexity is relying on the number of files a that we finally store in our output, there space complexity is linear (O(a)).
 
 **Task 3**
@@ -18,7 +18,7 @@ Space complexity: O(x), where x is the number of characters used.
 
 **Task 4**
 ___
-Similar to task 2, we have to recurse through a depth of n groups, containing x users. Therefore our potential time complexity might be O(n * x). As we only return True or False depending wheter a user is in a group, the space complexity is O(1).
+Similar to task 2, we have to recurse through a depth of n groups, containing x users. Again, groups are parents and users are the leafs so when doing bfs or dfs search we end up with a linear time complexity that in the worst case is O(n) where n is the depth of the tree (if looks like a linked list, this is also the number of items). As we only return True or False depending wheter a user is in a group, the space complexity is O(1).
 
 **Task 5**
 ___

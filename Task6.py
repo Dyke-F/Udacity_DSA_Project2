@@ -92,12 +92,7 @@ def intersection(llist_1, llist_2):
     for value in llist1_set:
         if value in llist2_set:
             intersection_set.add(value)
-
-intersection_list = LinkedList()
-for val in intersection_set:
-    intersection_list.append(val)
-    
-    return intersection_list
+    return intersection_set
 
 
 
